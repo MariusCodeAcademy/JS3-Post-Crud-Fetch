@@ -16,7 +16,7 @@ export default class Post {
             <p class="card-text">
                     ${body}
             </p>
-            <a href="./singlePost.html" class="btn btn-primary">read more</a>
+            <a href="./singlePost.html?postId=${id}" class="btn btn-primary">read more</a>
         </div>
       `;
     this.parentEl.append(cardEl);
