@@ -30,4 +30,13 @@ export default class Api {
       })
       .catch((err) => console.log(err));
   }
+
+  static getWeaterData(successCallback) {
+    fetch(
+      "http://www.7timer.info/bin/api.pl?lon=55.316702&lat=22.408877&unit=Metric&product=astro&output=json"
+    )
+      .then((resp) => resp.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.warn(err));
+  }
 }

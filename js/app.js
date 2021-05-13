@@ -12,6 +12,8 @@ const postsContainer = document.querySelector(".post-container");
 const singlePostsPage = document.querySelector(".single-posts-page");
 const addPostPage = document.querySelector(".add-posts-page");
 
+Api.getWeaterData();
+
 if (postsContainer) {
   console.log("Posts page");
 
