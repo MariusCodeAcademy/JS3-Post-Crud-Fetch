@@ -77,24 +77,7 @@ if (addPostPage) {
       body: bodyEl.value,
       userId: 1,
     };
-    console.log("naujas el irasymui ", postToCreateData);
+    // console.log("naujas el irasymui ", postToCreateData);
     Api.sendPost(postToCreateData);
   });
-
-  const siusti = {
-    title: "foo",
-    body: "bar",
-    userId: 1,
-  };
-
-  fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    body: JSON.stringify(siusti),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((resp) => resp.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
 }
