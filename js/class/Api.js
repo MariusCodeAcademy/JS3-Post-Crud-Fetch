@@ -15,7 +15,7 @@ export default class Api {
       .catch((err) => console.warn(err));
   }
 
-  static sendPost(objToBeSent) {
+  static sendPost(objToBeSent, successCallback) {
     fetch(Api.postUrl + "posts", {
       method: "POST",
       body: JSON.stringify(objToBeSent),
@@ -24,7 +24,10 @@ export default class Api {
       },
     })
       .then((resp) => resp.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        successCallback(data);
+      })
       .catch((err) => console.log(err));
   }
 }

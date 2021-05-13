@@ -61,8 +61,18 @@ if (singlePostsPage) {
 if (addPostPage) {
   console.log("we are on add post page, right?");
   const formEl = document.getElementById("add-post-form");
+  const formPartEl = document.querySelector(".form-part");
+  const formSuccessEl = document.querySelector(".form-success");
   const titleEl = document.getElementById("title");
   const bodyEl = document.getElementById("body");
+  const restartFormBtn = document.querySelector(".another-post-btn");
+
+  restartFormBtn.addEventListener("click", handleFormSent);
+
+  function handleFormSent() {
+    formPartEl.classList.toggle("d-none");
+    formSuccessEl.classList.toggle("d-none");
+  }
 
   formEl.addEventListener("submit", (event) => {
     // sustabdom forma nuo puslapio perkrovimo
@@ -78,6 +88,8 @@ if (addPostPage) {
       userId: 1,
     };
     // console.log("naujas el irasymui ", postToCreateData);
-    Api.sendPost(postToCreateData);
+    Api.sendPost(postToCreateData, handleFormSent);
+    titleEl.value = "";
+    bodyEl.value = "";
   });
 }
