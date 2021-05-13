@@ -23,6 +23,13 @@ if (postsContainer) {
 
 if (singlePostsPage) {
   console.log("sigle post page");
+
+  // nuorodos
+  const cardEl = document.querySelector(".card");
+  const imgEl = cardEl.querySelector("img");
+  const titleEl = cardEl.querySelector(".card-title");
+  const pEl = cardEl.querySelector(".card-text");
+
   // gaunam GET paramerta is URL nuorodos
   /// "singlePost.html?postId=4"
   const urlParams = new URLSearchParams(window.location.search);
@@ -30,6 +37,16 @@ if (singlePostsPage) {
   console.log(postIdFromGet);
 
   // gauti post kurio id yra postIdFromGet
+  // padaryti fetch i "https://jsonplaceholder.typicode.com/posts/id"
+  fetch("https://jsonplaceholder.typicode.com/posts/" + postIdFromGet)
+    .then((resp) => resp.json())
+    .then((userObj) => {
+      console.log(userObj);
+      titleEl.textContent = userObj.title;
+      pEl.textContent = userObj.body;
+      imgEl.src = `https://picsum.photos/seed/${userObj.id}/1000/500`;
+    })
+    .catch((err) => console.error(err));
 
-  // gavus uzpildyti title ir body info siame puslapyje
+  // gavus uzpildyti title ir body ir img info siame puslapyje
 }
