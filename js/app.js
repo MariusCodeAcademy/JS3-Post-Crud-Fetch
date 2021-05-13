@@ -10,6 +10,7 @@ loadNav();
 // nuorodos
 const postsContainer = document.querySelector(".post-container");
 const singlePostsPage = document.querySelector(".single-posts-page");
+const addPostPage = document.querySelector(".add-posts-page");
 
 if (postsContainer) {
   console.log("Posts page");
@@ -38,15 +39,25 @@ if (singlePostsPage) {
 
   // gauti post kurio id yra postIdFromGet
   // padaryti fetch i "https://jsonplaceholder.typicode.com/posts/id"
-  fetch("https://jsonplaceholder.typicode.com/posts/" + postIdFromGet)
-    .then((resp) => resp.json())
-    .then((userObj) => {
-      console.log(userObj);
-      titleEl.textContent = userObj.title;
-      pEl.textContent = userObj.body;
-      imgEl.src = `https://picsum.photos/seed/${userObj.id}/1000/500`;
-    })
-    .catch((err) => console.error(err));
+  // fetch("https://jsonplaceholder.typicode.com/posts/" + postIdFromGet)
+  //   .then((resp) => resp.json())
+  //   .then((userObj) => {
+  //     console.log(userObj);
+  //     titleEl.textContent = userObj.title;
+  //     pEl.textContent = userObj.body;
+  //     imgEl.src = `https://picsum.photos/seed/${userObj.id}/1000/500`;
+  //   })
+  //   .catch((err) => console.error(err));
+
+  Api.getSinglePost(postIdFromGet, (userObj) => {
+    titleEl.textContent = userObj.title;
+    pEl.textContent = userObj.body;
+    imgEl.src = `https://picsum.photos/seed/${userObj.id}/1000/500`;
+  });
 
   // gavus uzpildyti title ir body ir img info siame puslapyje
+}
+
+if (addPostPage) {
+  console.log("we are on add post page, right?");
 }
