@@ -54,9 +54,7 @@ if (singlePostsPage) {
     pEl.textContent = userObj.body;
     imgEl.src = `https://picsum.photos/seed/${userObj.id}/1000/500`;
   });
-
-  // gavus uzpildyti title ir body ir img info siame puslapyje
-}
+} //singlePostsPage Pabaiga
 
 if (addPostPage) {
   console.log("we are on add post page, right?");
