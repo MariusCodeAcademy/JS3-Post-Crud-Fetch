@@ -2,12 +2,17 @@
 console.log("app.js");
 
 import Api from "./class/Api.js";
-import generatePosts from "./class/Posts.js";
+import Post from "./class/Posts.js";
 
 // nuorodos
 export const postsContainer = document.querySelector(".post-container");
 
-Api.getPosts(10, function (postsArr) {
-  console.log(postsArr);
-  generatePosts(postsArr);
-});
+console.log("postsContainer", postsContainer);
+
+if (postsContainer) {
+  Api.getPosts(10, function (postsArr) {
+    postsContainer.innerHTML = null;
+    console.log(postsArr);
+    postsArr.forEach((postObj) => new Post(postsContainer, postObj));
+  });
+}

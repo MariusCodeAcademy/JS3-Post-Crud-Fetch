@@ -1,21 +1,24 @@
-import { postsContainer } from "../app.js";
-export default function generatePosts(postArrData) {
-  postsContainer.innerHTML = null;
-  postArrData.forEach((postObj) => {
+export default class Post {
+  constructor(parentEl, postObj) {
+    this.postObj = postObj;
+    this.parentEl = parentEl;
+    this.generatePost();
+  }
+  generatePost() {
     // generuojam viena el
+    const { id, title, body } = this.postObj;
     const cardEl = document.createElement("article");
     cardEl.className = "card";
     cardEl.innerHTML = `
-      <img src="https://picsum.photos/seed/${postObj.id}/300/200" class="card-img-top" alt="..." />
-      <div class="card-body">
-          <h5 class="card-title">${postObj.title}</h5>
-          <p class="card-text">
-                  ${postObj.body}
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
+        <img src="https://picsum.photos/seed/${id}/300/200" class="card-img-top" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title">${title}</h5>
+            <p class="card-text">
+                    ${body}
+            </p>
+            <a href="./singlePost.html" class="btn btn-primary">read more</a>
+        </div>
       `;
-    postsContainer.append(cardEl);
-    // vieno el generacijos pabaiga
-  });
+    this.parentEl.append(cardEl);
+  }
 }
