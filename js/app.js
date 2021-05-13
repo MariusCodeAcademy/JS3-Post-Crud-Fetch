@@ -60,4 +60,41 @@ if (singlePostsPage) {
 
 if (addPostPage) {
   console.log("we are on add post page, right?");
+  const formEl = document.getElementById("add-post-form");
+  const titleEl = document.getElementById("title");
+  const bodyEl = document.getElementById("body");
+
+  formEl.addEventListener("submit", (event) => {
+    // sustabdom forma nuo puslapio perkrovimo
+    event.preventDefault();
+    console.log("issiusta");
+    // gauti ivesties lauku reiksmes // jas isloginti kai forma yra submitinama
+    // console.log(bodyEl.value);
+    // console.log(titleEl.value);
+    // suformuoti reiksmes objekto pavidalu
+    const postToCreateData = {
+      title: titleEl.value,
+      body: bodyEl.value,
+      userId: 1,
+    };
+    console.log("naujas el irasymui ", postToCreateData);
+    Api.sendPost(postToCreateData);
+  });
+
+  const siusti = {
+    title: "foo",
+    body: "bar",
+    userId: 1,
+  };
+
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    body: JSON.stringify(siusti),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((resp) => resp.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 }
