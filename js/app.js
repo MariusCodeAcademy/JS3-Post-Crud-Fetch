@@ -3,10 +3,13 @@ console.log("app.js");
 
 import Api from "./class/Api.js";
 import Post from "./class/Posts.js";
+import { loadNav } from "./functions.js";
+
+loadNav();
 
 // nuorodos
 export const postsContainer = document.querySelector(".post-container");
-
+let pirmasP;
 console.log("postsContainer", postsContainer);
 
 if (postsContainer) {
