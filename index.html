@@ -14,9 +14,11 @@
       integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
       crossorigin="anonymous"
     />
-
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/weather.css" />
     <title>Post_Crud_Fetch</title>
   </head>
+
   <body>
     <main class="container home-page">
       <h1 class="display-3">Post<strong>Crud</strong>Fetch</h1>
@@ -28,7 +30,19 @@
         <small>created at: </small>
       </article>
 
-      <section id="weather"></section>
+      <section id="weather">
+        <article class="widget">
+          <div class="weatherIcon"><i class="wi wi-day-cloudy"></i></div>
+          <div class="weatherInfo">
+            <div class="temperature"><span>25&deg;</span></div>
+            <div class="description">
+              <div class="weatherCondition">CLOUDY</div>
+              <div class="place">New York, New York</div>
+            </div>
+          </div>
+          <div class="date">1st Jan</div>
+        </article>
+      </section>
     </main>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
