@@ -42,7 +42,7 @@ body {
   color: white;
 }
 .widget .weatherInfo .temperature {
-  flex: 0 0 40%;
+  flex: 0 0 30%;
   width: 100%;
   font-size: 65px;
   display: flex;
@@ -75,6 +75,7 @@ body {
   color: white;
   font-size: 30px;
   font-weight: 800;
+  text-align: center;
 }
 p {
   position: fixed;
