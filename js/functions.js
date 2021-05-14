@@ -13,3 +13,10 @@ export function getPostIdFromUrl() {
   const postIdFromGet = urlParams.get("postId");
   return postIdFromGet;
 }
+
+export function showChuckJoke(jokeEl, joke) {
+  jokeEl.children[1].innerHTML = joke.value;
+  jokeEl.children[0].src = joke.icon_url;
+  jokeEl.children[2].innerHTML += joke.created_at;
+  jokeEl.classList.remove("d-none");
+}

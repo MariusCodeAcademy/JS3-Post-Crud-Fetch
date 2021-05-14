@@ -5,7 +5,7 @@ import Api from "./class/Api.js";
 import Post from "./class/Posts.js";
 import SinglePost from "./class/SinglePost.js";
 import Comments from "./class/Comments.js";
-import { loadNav, getPostIdFromUrl } from "./functions.js";
+import { loadNav, getPostIdFromUrl, showChuckJoke } from "./functions.js";
 
 loadNav();
 
@@ -27,11 +27,8 @@ if (homePage) {
   // i konsole gavau chuck noris juokeli
   Api.getRandomNorisJoke()
     .then((joke) => {
+      showChuckJoke(jokeEl, joke);
       console.log(joke);
-      jokeEl.children[1].innerHTML = joke.value;
-      jokeEl.children[0].src = joke.icon_url;
-      jokeEl.children[2].innerHTML += joke.created_at;
-      jokeEl.classList.remove("d-none");
     })
     .catch((err) => console.warn(err.message));
   //https://api.chucknorris.io/
