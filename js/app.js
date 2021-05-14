@@ -3,18 +3,25 @@ console.log("app.js");
 
 import Api from "./class/Api.js";
 import Post from "./class/Posts.js";
-import { loadNav } from "./functions.js";
+import SinglePost from "./class/SinglePost.js";
+import { loadNav, getPostIdFromUrl } from "./functions.js";
 
 loadNav();
 
 // nuorodos
 const postsContainer = document.querySelector(".post-container");
 const singlePostsPage = document.querySelector(".single-posts-page");
-console.log("singlePostsPage", singlePostsPage);
+// console.log("singlePostsPage", singlePostsPage);
 
 const addPostPage = document.querySelector(".add-posts-page");
 
-Api.getWeaterData();
+// Api.getWeaterData();
+
+// if(homePage) {
+//   // tutuliniame puslapyje parsiusti ir atvaizduoti random CHuck noris juokeli is
+//   //https://api.chucknorris.io/
+//   // naudojant asyc await
+// }
 
 if (postsContainer) {
   console.log("Posts page");
@@ -29,34 +36,16 @@ if (postsContainer) {
 if (singlePostsPage) {
   console.log("sigle post page");
 
-  // nuorodos
-  const cardEl = document.querySelector(".card");
-  const imgEl = cardEl.querySelector("img");
-  const titleEl = cardEl.querySelector(".card-title");
-  const pEl = cardEl.querySelector(".card-text");
-
-  // gaunam GET paramerta is URL nuorodos
-  /// "singlePost.html?postId=4"
-  const urlParams = new URLSearchParams(window.location.search);
-  const postIdFromGet = urlParams.get("postId");
-  console.log(postIdFromGet);
-
-  // gauti post kurio id yra postIdFromGet
-  // padaryti fetch i "https://jsonplaceholder.typicode.com/posts/id"
-  // fetch("https://jsonplaceholder.typicode.com/posts/" + postIdFromGet)
-  //   .then((resp) => resp.json())
-  //   .then((userObj) => {
-  //     console.log(userObj);
-  //     titleEl.textContent = userObj.title;
-  //     pEl.textContent = userObj.body;
-  //     imgEl.src = `https://picsum.photos/seed/${userObj.id}/1000/500`;
-  //   })
-  //   .catch((err) => console.error(err));
+  const postIdFromGet = getPostIdFromUrl();
 
   Api.getSinglePost(postIdFromGet, (userObj) => {
-    titleEl.textContent = userObj.title;
-    pEl.textContent = userObj.body;
-    imgEl.src = `https://picsum.photos/seed/${userObj.id}/1000/500`;
+    console.log("makingPost");
+    new SinglePost(singlePostsPage, userObj);
+  });
+
+  Api.getSingleComment(postIdFromGet, (comments) => {
+    console.log("comments", comments);
+    // new Comments(comments)
   });
 } //singlePostsPage Pabaiga
 

@@ -5,3 +5,11 @@ export function loadNav() {
     .then((nav) => document.body.insertAdjacentHTML("afterbegin", nav))
     .catch((err) => console.warn(err));
 }
+
+// gaunam GET paramerta is URL nuorodos
+/// http://127.0.0.1:5500/pages/singlePost.html?postId=1
+export function getPostIdFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const postIdFromGet = urlParams.get("postId");
+  return postIdFromGet;
+}

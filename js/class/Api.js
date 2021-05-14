@@ -15,6 +15,13 @@ export default class Api {
       .catch((err) => console.warn(err));
   }
 
+  static getSingleComment(userId, successCallback) {
+    fetch(Api.postUrl + "posts/" + userId + "/comments")
+      .then((resp) => resp.json())
+      .then((data) => successCallback(data))
+      .catch((err) => console.warn(err));
+  }
+
   static sendPost(objToBeSent, successCallback) {
     fetch(Api.postUrl + "posts", {
       method: "POST",
