@@ -28,7 +28,7 @@ if (homePage) {
   Api.getRandomNorisJoke()
     .then((joke) => {
       showChuckJoke(jokeEl, joke);
-      console.log(joke);
+      // console.log(joke);
     })
     .catch((err) => console.warn(err.message));
   //https://api.chucknorris.io/
