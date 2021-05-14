@@ -1,5 +1,12 @@
 export default class Api {
   static postUrl = "https://jsonplaceholder.typicode.com/";
+  static chuckUrl = "https://api.chucknorris.io/jokes/random";
+
+  static async getRandomNorisJoke() {
+    const resp = await fetch(Api.chuckUrl);
+    const jokeObj = await resp.json();
+    return jokeObj;
+  }
 
   static getPosts(howMany, successCallback) {
     fetch(Api.postUrl + "posts")

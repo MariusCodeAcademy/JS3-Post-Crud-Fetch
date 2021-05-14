@@ -13,16 +13,30 @@ loadNav();
 const postsContainer = document.querySelector(".post-container");
 const singlePostsPage = document.querySelector(".single-posts-page");
 // console.log("singlePostsPage", singlePostsPage);
-
+const homePage = document.querySelector(".home-page");
 const addPostPage = document.querySelector(".add-posts-page");
 
 // Api.getWeaterData();
 
-// if(homePage) {
-//   // tutuliniame puslapyje parsiusti ir atvaizduoti random CHuck noris juokeli is
-//   //https://api.chucknorris.io/
-//   // naudojant asyc await
-// }
+if (homePage) {
+  console.log("homePage");
+  const jokeEl = document.querySelector(".joke");
+  // tutuliniame puslapyje parsiusti ir atvaizduoti random CHuck noris juokeli is
+  // gavau konsoleje homePage
+  // zinau kokiu adresu kreiptis gauti random juokeli
+  // i konsole gavau chuck noris juokeli
+  Api.getRandomNorisJoke()
+    .then((joke) => {
+      console.log(joke);
+      jokeEl.children[1].innerHTML = joke.value;
+      jokeEl.children[0].src = joke.icon_url;
+      jokeEl.children[2].innerHTML += joke.created_at;
+      jokeEl.classList.remove("d-none");
+    })
+    .catch((err) => console.warn(err.message));
+  //https://api.chucknorris.io/
+  // naudojant asyc await
+}
 
 if (postsContainer) {
   console.log("Posts page");
@@ -32,7 +46,7 @@ if (postsContainer) {
     console.log(postsArr);
     postsArr.forEach((postObj) => new Post(postsContainer, postObj));
   });
-}
+} // post container pabaiga
 
 if (singlePostsPage) {
   console.log("sigle post page");
@@ -44,6 +58,8 @@ if (singlePostsPage) {
     new SinglePost(singlePostsPage, userObj);
     const deleteBtn = singlePostsPage.querySelector("#delete");
     console.log("deleteBTN", deleteBtn);
+    // .bind(thisReiskme, naujiArgumentai) - budas paduoti argumentus i funkcija kuri naudojama
+    // kaip argumentas
     deleteBtn.addEventListener("click", Api.deletePost.bind(null, postIdFromGet));
   });
 
@@ -89,4 +105,4 @@ if (addPostPage) {
     titleEl.value = "";
     bodyEl.value = "";
   });
-}
+} // add post page pabaiga
