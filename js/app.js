@@ -10,6 +10,8 @@ loadNav();
 // nuorodos
 const postsContainer = document.querySelector(".post-container");
 const singlePostsPage = document.querySelector(".single-posts-page");
+console.log("singlePostsPage", singlePostsPage);
+
 const addPostPage = document.querySelector(".add-posts-page");
 
 Api.getWeaterData();
