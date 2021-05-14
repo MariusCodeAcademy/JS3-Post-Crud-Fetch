@@ -25,12 +25,12 @@ if (homePage) {
   // gavau konsoleje homePage
   // zinau kokiu adresu kreiptis gauti random juokeli
   // i konsole gavau chuck noris juokeli
-  Api.getRandomNorisJoke()
-    .then((joke) => {
-      showChuckJoke(jokeEl, joke);
-      // console.log(joke);
-    })
-    .catch((err) => console.warn(err.message));
+  // Api.getRandomNorisJoke()
+  //   .then((joke) => {
+  //     showChuckJoke(jokeEl, joke);
+  //     // console.log(joke);
+  //   })
+  //   .catch((err) => console.warn(err.message));
   //https://api.chucknorris.io/
   // naudojant asyc await
 }
