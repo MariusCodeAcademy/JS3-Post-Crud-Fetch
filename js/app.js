@@ -4,6 +4,7 @@ console.log("app.js");
 import Api from "./class/Api.js";
 import Post from "./class/Posts.js";
 import SinglePost from "./class/SinglePost.js";
+import Comments from "./class/Comments.js";
 import { loadNav, getPostIdFromUrl } from "./functions.js";
 
 loadNav();
@@ -41,11 +42,16 @@ if (singlePostsPage) {
   Api.getSinglePost(postIdFromGet, (userObj) => {
     console.log("makingPost");
     new SinglePost(singlePostsPage, userObj);
+    const deleteBtn = singlePostsPage.querySelector("#delete");
+    console.log("deleteBTN", deleteBtn);
+    deleteBtn.addEventListener("click", Api.deletePost.bind(null, postIdFromGet));
   });
 
   Api.getSingleComment(postIdFromGet, (comments) => {
     console.log("comments", comments);
-    // new Comments(comments)
+    if (comments.length > 0) {
+      new Comments(singlePostsPage, comments);
+    }
   });
 } //singlePostsPage Pabaiga
 

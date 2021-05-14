@@ -38,6 +38,14 @@ export default class Api {
       .catch((err) => console.log(err));
   }
 
+  static async deletePost(postId) {
+    const resp = await fetch(`${Api.postUrl}posts/${postId}`, {
+      method: "DELETE",
+    });
+    const data = await resp.json();
+    console.log("delete", data, "deletedId", postId);
+  }
+
   static getWeaterData(successCallback) {
     fetch(
       "http://www.7timer.info/bin/api.pl?lon=55.316702&lat=22.408877&unit=Metric&product=astro&output=json"

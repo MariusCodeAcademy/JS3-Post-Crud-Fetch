@@ -16,6 +16,7 @@ export default class SinglePost {
                 ${body}
             </p>
             <a href="/pages/posts.html" class="btn btn-primary">Go back</a>
+            <button id="delete" class="btn btn-danger">Delete Post</button>
         </div>
       `;
     this.parentEl.firstElementChild.after(cardEl);
